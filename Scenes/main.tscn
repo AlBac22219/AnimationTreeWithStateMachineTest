@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo17iee70b6s"]
+
+[ext_resource type="PackedScene" uid="uid://dmxfjr0djh51v" path="res://Scenes/Player/player.tscn" id="1_gv0ow"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qk2ra"]
+size = Vector3(1000, 1, 1000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyq22"]
+albedo_color = Color(0.34902, 0.643137, 0.321569, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tycgo"]
+material = SubResource("StandardMaterial3D_uyq22")
+size = Vector2(1000, 1000)
+
+[node name="main" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20392, 0)
+shape = SubResource("BoxShape3D_qk2ra")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("PlaneMesh_tycgo")
+skeleton = NodePath("../../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.793927, 0.608013, 0, -0.608013, 0.793927, 0, 359.992, 387.225)
+
+[node name="Player" parent="." instance=ExtResource("1_gv0ow")]
+
+[node name="GeneralSkeleton" parent="Player/player/Armature" index="0"]
+bones/0/position = Vector3(0.0444191, 101.025, 0.577795)
+bones/0/rotation = Quaternion(-0.0307341, -0.0478408, -0.0295834, 0.997944)
+bones/1/rotation = Quaternion(0.0285395, 0.0119151, 0.0221096, 0.999277)
+bones/2/rotation = Quaternion(0.0102011, 0.00307095, 0.0136396, 0.99985)
+bones/3/rotation = Quaternion(0.00997817, 0.00326649, 0.0136659, 0.999852)
+bones/4/rotation = Quaternion(0.0486061, -0.000923829, 0.00418676, 0.998809)
+bones/5/rotation = Quaternion(0.0485657, -0.0011175, 0.00448454, 0.998809)
+bones/7/rotation = Quaternion(0.456063, 0.501824, 0.631235, -0.376459)
+bones/8/rotation = Quaternion(0.151151, 0.818461, -0.543871, -0.107143)
+bones/9/rotation = Quaternion(0.0128324, -0.705391, -0.0656344, 0.705657)
+bones/10/rotation = Quaternion(0.00272869, 0.417622, -0.0610353, 0.906565)
+bones/15/rotation = Quaternion(0.474969, -0.481024, -0.633117, -0.377072)
+bones/16/rotation = Quaternion(-0.186726, 0.838934, -0.47415, 0.191062)
+bones/17/rotation = Quaternion(0.0435386, 0.706601, 0.0349134, 0.705408)
+bones/18/rotation = Quaternion(-0.0209775, -0.525886, 0.0715868, 0.847277)
+bones/23/rotation = Quaternion(0.129418, 0.105978, 0.985185, -0.037821)
+bones/24/rotation = Quaternion(-0.0386989, 0.992784, -0.110728, 0.0249258)
+bones/25/rotation = Quaternion(-0.0104452, 0.723355, -0.690132, 0.0191264)
+bones/28/rotation = Quaternion(-0.0900664, 0.0150586, 0.993421, -0.0691159)
+bones/29/rotation = Quaternion(0.0333623, 0.994145, -0.0531403, -0.0879689)
+bones/30/rotation = Quaternion(-0.0203843, 0.697148, -0.716625, 0.00419035)
+bones/31/rotation = Quaternion(1.94855e-07, 0.998006, 0.0631269, -9.75824e-07)
+
+[node name="LedtHandEffect" parent="Player/player/Armature/GeneralSkeleton" index="8"]
+transform = Transform3D(0.00750929, 0.063318, -0.997965, 0.107278, -0.992285, -0.0621502, -0.994201, -0.106593, -0.014244, 22.6574, 84.6138, 1.47688)
+
+[editable path="Player"]
+[editable path="Player/player"]
